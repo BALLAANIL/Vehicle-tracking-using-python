@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Data Logs</title>
+  </head>
+  <body>
+    <h1>Data Logs</h1>
+    <ul id="data-list"></ul>
+
+    <script>
+      fetch('/data')
+        .then(response => response.json())
+        .then(data => {
+          const dataList = document.getElementById('data-list');
+          data.forEach(item => {
+            const listItem = document.createElement('li');
+            listItem.textContent = `Latitude: ${item.latitude}, Longitude: ${item.longitude}, Fuel Level: ${item.fuel_level}`;
+            dataList.appendChild(listItem);
+          });
+        });
+    </script>
+  </body>
+</html>
